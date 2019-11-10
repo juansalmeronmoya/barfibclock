@@ -45,5 +45,5 @@ This project is inspired and based on the otvinta3d clock.
 Most of the 3D models used are the same, you can check them out at
 https://www.thingiverse.com/thing:3266949
 
-Arduino code are also inspired on the work of https://github.com/ardenpm/servo_clock
+Arduino code are also inspired on the work of https://github.com/ardenpm/servo_clock and https://www.thingiverse.com/thing:3375870
 
