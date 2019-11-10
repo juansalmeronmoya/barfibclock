@@ -5,7 +5,12 @@ Repository used to share my work for the clock installed on the Facultat d'Infor
  - 28 x 9g Servo http://bit.ly/2K3JbCk
  - 1 x Arduino Pro mini Atmega328 http://bit.ly/2NVvFll
  - 2 x I2C servo controller http://bit.ly/34KH0LF
- - TODO: complete list
+ - 1 x DC 5V3A adapter http://bit.ly/2NvYGVG
+ - 1 x DC connector http://bit.ly/33AKoJ4
+ - 1 x DS3231 RTC module http://bit.ly/32uphGY
+ - 1 x CR2032 3v battery http://bit.ly/2PYQaAa
+
+TODO: complete list
 
 ## Printing 3D models
 | Qty | Filename             |
@@ -32,6 +37,7 @@ Repository used to share my work for the clock installed on the Facultat d'Infor
 | 4   | dc_shoe_f.stl        |
 | 4   | dc_shoe_g.stl        |
 | 2   | dc_shoe_center.stl   |
+
 note: info extracted from http://www.otvinta.com/download14.html
 
 ## Previous work
