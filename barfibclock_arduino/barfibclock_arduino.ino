@@ -37,18 +37,23 @@ const byte mapchar [11][7] = { //for each number, position of every segment
   {1, 1, 1, 1, 0, 1, 1}, // nine
   {0, 0, 0, 0, 0, 0, 0} // null (all down)
 };
-const int servopulse [2] {210, 450}; // pulse of servos at low positions and high position
 const byte servoreverse [4] [7] = { // one identifies wservos that work reverse, zero is normal direction
-  {0, 1, 0, 0, 1, 0, 0},
-  {1, 0, 0, 1, 0, 1, 1},
-  {1, 1, 0, 1, 0, 1, 1},
-  {1, 1, 0, 1, 0, 1, 1}
+  {1, 1, 0, 0, 0, 1, 1},
+  {1, 1, 0, 0, 0, 1, 1},
+  {1, 1, 0, 0, 0, 1, 1},
+  {1, 1, 0, 0, 0, 1, 1}
 };
-const int servofinetune [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
-  {0, 0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0, 0},
-  {-70, -20, 60, -50, -40, 110, 20}
+const int servolow [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
+  {-300, 210, 210, 210, 210, 210, 10},
+  {450, 210, 210, 210, 210, 210, 10},
+  {450, 210, 210, 210, 210, 210, 10},
+  {450, 210, 210, 210, 210, 210, 10}
+};
+const int servohigh [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
+  {550, 450, 450, 450, 450, 450, 450},
+  {550, 450, 450, 450, 450, 450, 450},
+  {550, 450, 450, 450, 450, 450, 450},
+  {550, 450, 450, 450, 450, 450, 450}
 };
 byte moment [4] = {8, 8, 8, 8}; // actual time
 byte momentnull [4] = {10, 10, 10, 10}; // all digits in null for startup
@@ -72,6 +77,10 @@ void setup() {
 
 void loop() {
   capturetime(); // captura el momento!
+  moment[0] = 7;
+  moment[1] = 7;
+  moment[2] = 7;
+  moment[3] = 7;
   showtime(moment, 0); // to the main routine that shows the time in our digital clock
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
     if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
@@ -85,6 +94,10 @@ void capturetime() {
   moment[1] = now.hour() - moment[0] * 10; // find out second digit from hour
   moment[2] = now.minute() / 10; // find our first digit from minute
   moment[3] = now.minute() - moment[2] * 10; // find out second digit from minute
+  Serial.print(moment[0]);
+  Serial.print(moment[1]);
+  Serial.print(moment[2]);
+  Serial.println(moment[3]);
 }
 
 void showtime(byte m [4], int w) {
@@ -111,13 +124,14 @@ void showdigit(byte i, byte digit, int w) {
   for (byte j = 0; j < 7; j++) { // show the 7 segments
     servonum = j + (8 * ((i == 1 || i == 3))); // add 8 if position is 1 or 3 because 1 ands 3 digits start on pin 8 of the PCA
     segmentposition = mapchar[digit] [j]; // segment should be low or high?
-    if (servoreverse [i] [j] == 0) {
-      pulse = servopulse[segmentposition]; // for a normal (not reverse) servo assign pulse low or high
+    if (servoreverse [i] [j] == 1) {
+      segmentposition = !segmentposition;
     }
-    else {
-      pulse = servopulse[!segmentposition]; // if servo works reverse, assign contrary
+    if (segmentposition == 0) {
+        pulse = servolow[i][j]; 
+    } else {
+        pulse = servohigh[i][j]; 
     }
-    pulse = pulse + servofinetune [i] [j]; // add the fine tunning to the servo
 
     switch (i) { // switch for both PCA controllers
       case 0: case 1:
