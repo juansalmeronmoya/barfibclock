@@ -57,6 +57,8 @@ void setup() {
 
   Serial.begin(9600);
   rtc.begin();
+  //rtc.adjust(DateTime(__DATE__, __TIME__)); //uncomment to set time to now
+  //rtc.adjust(DateTime(2019, 12, 27, 22, 51, 0)); 
   pinMode(enablepin, OUTPUT); // this is the pin for OE in the PCA (enable/disable servos LOW/HIGH)
   pinMode(setmodepin, INPUT); // this is the pin for set time button
   pinMode(setpluspin, INPUT); // this is the pin for set plus button
@@ -72,13 +74,9 @@ void setup() {
 void loop() {
   //tuning();
   capturetime(); // captura el momento!
-  //moment[0] = 7;
-  //moment[1] = 7;
-  //moment[2] = 7;
-  //moment[3] = 7;
   showtime(moment, 0); // to the main routine that shows the time in our digital clock
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
-    if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
+    //if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
     capturetime();
   }
 }
