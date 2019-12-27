@@ -37,12 +37,6 @@ const byte mapchar [11][7] = { //for each number, position of every segment
   {1, 1, 1, 1, 0, 1, 1}, // nine
   {0, 0, 0, 0, 0, 0, 0} // null (all down)
 };
-const byte servoreverse [4] [7] = { // one identifies wservos that work reverse, zero is normal direction
-  {0, 0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0, 0}
-};
 const int servolow [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
   {400, 500, 130, 180, 280, 410, 340},
   {420, 330, 170, 180, 180, 400, 370},
@@ -139,14 +133,10 @@ void capturetime() {
   moment[1] = now.hour() - moment[0] * 10; // find out second digit from hour
   moment[2] = now.minute() / 10; // find our first digit from minute
   moment[3] = now.minute() - moment[2] * 10; // find out second digit from minute
-  //Serial.print(moment[0]);
-  //Serial.print(moment[1]);
-  //Serial.print(moment[2]);
-  //Serial.println(moment[3]);
 }
 
 void showtime(byte m [4], int w) {
-  int d = 275; // delay needed to stop the servos moving before disabling them
+  int d = 1000; // delay needed to stop the servos moving before disabling them
   // parameters: matrix with the digits to show
   if (memcmp(m, momentdisplay, 4) != 0) { // if time displayed is different to time expected to be shown
     digitalWrite(enablepin, LOW); // enable the servos
@@ -169,9 +159,6 @@ void showdigit(byte i, byte digit, int w) {
   for (byte j = 0; j < 7; j++) { // show the 7 segments
     servonum = j + (8 * ((i == 1 || i == 3))); // add 8 if position is 1 or 3 because 1 ands 3 digits start on pin 8 of the PCA
     segmentposition = mapchar[digit] [j]; // segment should be low or high?
-    if (servoreverse [i] [j] == 1) {
-      segmentposition = !segmentposition;
-    }
     if (segmentposition == 0) {
       pulse = servolow[i][j];
     } else {
