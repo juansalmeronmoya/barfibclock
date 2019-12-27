@@ -38,22 +38,22 @@ const byte mapchar [11][7] = { //for each number, position of every segment
   {0, 0, 0, 0, 0, 0, 0} // null (all down)
 };
 const byte servoreverse [4] [7] = { // one identifies wservos that work reverse, zero is normal direction
-  {1, 1, 0, 0, 0, 1, 1},
-  {1, 1, 0, 0, 0, 1, 1},
-  {1, 1, 0, 0, 0, 1, 1},
-  {1, 1, 0, 0, 0, 1, 1}
+  {0, 0, 0, 0, 0, 0, 0},
+  {0, 0, 0, 0, 0, 0, 0},
+  {0, 0, 0, 0, 0, 0, 0},
+  {0, 0, 0, 0, 0, 0, 0}
 };
 const int servolow [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
-  {-300, 210, 210, 210, 210, 210, 10},
-  {450, 210, 210, 210, 210, 210, 10},
-  {450, 210, 210, 210, 210, 210, 10},
-  {450, 210, 210, 210, 210, 210, 10}
+  {400, 500, 130, 180, 280, 410, 340},
+  {420, 330, 170, 180, 180, 400, 370},
+  {400, 400, 210, 180, 270, 510, 380},
+  {400, 400, 250, 210, 210, 460, 390}
 };
 const int servohigh [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
-  {550, 450, 450, 450, 450, 450, 450},
-  {550, 450, 450, 450, 450, 450, 450},
-  {550, 450, 450, 450, 450, 450, 450},
-  {550, 450, 450, 450, 450, 450, 450}
+  {220, 300, 380, 410, 480, 170, 130},
+  {220, 130, 410, 400, 420, 130, 170},
+  {200, 190, 480, 410, 510, 280, 180},
+  {180, 180, 470, 450, 460, 210, 190}
 };
 byte moment [4] = {8, 8, 8, 8}; // actual time
 byte momentnull [4] = {10, 10, 10, 10}; // all digits in null for startup
@@ -76,15 +76,60 @@ void setup() {
 }
 
 void loop() {
+  //tuning();
   capturetime(); // captura el momento!
-  moment[0] = 7;
-  moment[1] = 7;
-  moment[2] = 7;
-  moment[3] = 7;
+  //moment[0] = 7;
+  //moment[1] = 7;
+  //moment[2] = 7;
+  //moment[3] = 7;
   showtime(moment, 0); // to the main routine that shows the time in our digital clock
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
     if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
     capturetime();
+  }
+}
+
+byte servoToTune = 0;
+int pulseToTune = 0;
+
+void tuning() {
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB
+  }
+  if (Serial.available() > 0) {
+    Serial.println("Enter servo to tune");
+    servoToTune = Serial.readString().toInt();
+
+    Serial.print("Tuning servo #");
+    Serial.println(servoToTune, DEC);
+    
+
+    while (pulseToTune != -1) {
+      if (Serial.available() > 0) {
+        Serial.println("Enter pulse to test, -1 for exit"); 
+        pulseToTune = Serial.readString().toInt();
+        
+        Serial.print("Servo #");
+        Serial.print(servoToTune, DEC);
+        Serial.print(" value: ");
+        Serial.println(pulseToTune, DEC);
+
+        //move servo
+        digitalWrite(enablepin, LOW);
+        if(servoToTune >= 21) {
+          servoMinutes.setPWM(servoToTune-13, 0, pulseToTune);
+        } else if(servoToTune >= 14 && servoToTune < 21) {
+          servoMinutes.setPWM(servoToTune-14, 0, pulseToTune);
+        } else if(servoToTune >= 7 && servoToTune < 14) {
+          servoHours.setPWM(servoToTune+1, 0, pulseToTune);
+        } else{
+          servoHours.setPWM(servoToTune, 0, pulseToTune);
+        }
+        delay(1000);
+        digitalWrite(enablepin, HIGH);
+      }
+    }
+    pulseToTune = 0;
   }
 }
 
@@ -94,10 +139,10 @@ void capturetime() {
   moment[1] = now.hour() - moment[0] * 10; // find out second digit from hour
   moment[2] = now.minute() / 10; // find our first digit from minute
   moment[3] = now.minute() - moment[2] * 10; // find out second digit from minute
-  Serial.print(moment[0]);
-  Serial.print(moment[1]);
-  Serial.print(moment[2]);
-  Serial.println(moment[3]);
+  //Serial.print(moment[0]);
+  //Serial.print(moment[1]);
+  //Serial.print(moment[2]);
+  //Serial.println(moment[3]);
 }
 
 void showtime(byte m [4], int w) {
@@ -128,9 +173,9 @@ void showdigit(byte i, byte digit, int w) {
       segmentposition = !segmentposition;
     }
     if (segmentposition == 0) {
-        pulse = servolow[i][j]; 
+      pulse = servolow[i][j];
     } else {
-        pulse = servohigh[i][j]; 
+      pulse = servohigh[i][j];
     }
 
     switch (i) { // switch for both PCA controllers
