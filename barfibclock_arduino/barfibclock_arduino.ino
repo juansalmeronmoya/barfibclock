@@ -74,17 +74,18 @@ void setup() {
 void loop() {
   //tuning();
   capturetime(); // captura el momento!
-  showtime(moment, 0); // to the main routine that shows the time in our digital clock
+  showtime(moment, 20);
+  showtime(moment, 0);
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
     //if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
     capturetime();
   }
 }
 
-byte servoToTune = 0;
-int pulseToTune = 0;
-
 void tuning() {
+  byte servoToTune = 0;
+  int pulseToTune = 0;
+  
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB
   }
@@ -134,7 +135,7 @@ void capturetime() {
 }
 
 void showtime(byte m [4], int w) {
-  int d = 1000; // delay needed to stop the servos moving before disabling them
+  int d = 1200; // delay needed to stop the servos moving before disabling them
   // parameters: matrix with the digits to show
   if (memcmp(m, momentdisplay, 4) != 0) { // if time displayed is different to time expected to be shown
     digitalWrite(enablepin, LOW); // enable the servos
