@@ -1,23 +1,6 @@
-/*
-    Digital Clock
-    Jordi Ginjaume
-    Version 20190118
-    Code started 20190110
-
-    Arduino code for digital clock, 3D printed inspired by www.otvinta.com, using the following hardware:
-    1 Arduino
-    2 PCA9685 servo drivers
-    RTC DS3231 real time clock
-    28 SG90 servos
-
-    Enjoy!
-
-*/
-
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h> // PCA9685 library
 #include <RTClib.h> //Real Time Clock library
-
 
 Adafruit_PWMServoDriver servoHours = Adafruit_PWMServoDriver(0x40); //first PCA9685 address
 Adafruit_PWMServoDriver servoMinutes = Adafruit_PWMServoDriver(0x41); //second PCA9685 address
@@ -75,7 +58,6 @@ void loop() {
   //tuning();
   capturetime(); // captura el momento!
   showtime(moment, 20);
-  showtime(moment, 0);
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
     //if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
     capturetime();
@@ -146,7 +128,7 @@ void showtime(byte m [4], int w) {
       }
     }
     delay(d); // give time to the servos to stop moving before disabling them
-    digitalWrite(enablepin, HIGH); // disable the servos
+    //digitalWrite(enablepin, HIGH); // disable the servos
   }
 }
 
