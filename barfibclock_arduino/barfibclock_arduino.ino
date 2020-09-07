@@ -6,7 +6,19 @@ Adafruit_PWMServoDriver servoHours = Adafruit_PWMServoDriver(0x40); //first PCA9
 Adafruit_PWMServoDriver servoMinutes = Adafruit_PWMServoDriver(0x41); //second PCA9685 address
 RTC_DS3231 rtc; //RTC address
 
-const int enablepin = 12, setmodepin = 4, setpluspin = 2, setminuspin = 3;
+// reference LOW to power buttons
+const int setmodelow_pin = 4;
+const int setpluslow_pin = 6;
+const int setminuslow_pin = 2;
+
+// servo enable pin
+const int enablepin = 12;
+
+// read button pins
+const int setmodepin = 5;
+const int setpluspin = 7;
+const int setminuspin = 3;
+
 const byte mapchar [11][7] = { //for each number, position of every segment
   {1, 1, 1, 0, 1, 1, 1}, // zero - segment number from top lo low, left to right
   {0, 0, 1, 0, 0, 1, 0}, // one
@@ -43,9 +55,15 @@ void setup() {
   //rtc.adjust(DateTime(__DATE__, __TIME__)); //uncomment to set time to now
   //rtc.adjust(DateTime(2019, 12, 27, 22, 51, 0)); 
   pinMode(enablepin, OUTPUT); // this is the pin for OE in the PCA (enable/disable servos LOW/HIGH)
-  pinMode(setmodepin, INPUT); // this is the pin for set time button
-  pinMode(setpluspin, INPUT); // this is the pin for set plus button
-  pinMode(setminuspin, INPUT); // this is the pin for set minus button
+  pinMode(setmodelow_pin, OUTPUT);
+  pinMode(setpluslow_pin, OUTPUT);
+  pinMode(setminuslow_pin, OUTPUT);
+  digitalWrite(setmodelow_pin, LOW);
+  digitalWrite(setpluslow_pin, LOW);
+  digitalWrite(setminuslow_pin, LOW);
+  pinMode(setmodepin, INPUT_PULLUP); // this is the pin for set time button
+  pinMode(setpluspin, INPUT_PULLUP); // this is the pin for set plus button
+  pinMode(setminuspin, INPUT_PULLUP); // this is the pin for set minus button
   servoHours.begin();
   servoHours.setPWMFreq(50); // set frequncy for first PCA
   servoMinutes.begin();
@@ -59,7 +77,7 @@ void loop() {
   capturetime(); // captura el momento!
   showtime(moment, 20);
   while (momentdisplay[3] == moment[3]) { // wait while minutes doesnt change...
-    //if (digitalRead(setmodepin) == HIGH) setmode(momentdisplay);
+    if (digitalRead(setmodepin) != HIGH) setmode(momentdisplay);
     capturetime();
   }
 }
@@ -173,15 +191,15 @@ void setmode(byte m[4]) {
   showtime(mset, 0);
   delay(d); // the delays in this routine are the wait between button press
 
-  while (digitalRead(setmodepin) != HIGH) { // wait in set hour mode until we press again the set button
-    if (digitalRead(setpluspin) == HIGH) {
+  while (digitalRead(setmodepin) == HIGH) { // wait in set hour mode until we press again the set button
+    if (digitalRead(setpluspin) != HIGH) {
       hourset = (hourset + 1) % 24; // add one hour and do modulo 24
       mset[0] = hourset / 10; // assign to mset in order to be displayed
       mset[1] = hourset - mset[0] * 10;
       showtime(mset, 0); // display the set time
       delay(d);
     }
-    if (digitalRead(setminuspin) == HIGH) {
+    if (digitalRead(setminuspin) != HIGH) {
       hourset = (hourset - 1); // substract one to hour and if neative assign 23 (next line)
       if (hourset < 0) hourset = 23;
       mset[0] = hourset / 10;
@@ -198,15 +216,15 @@ void setmode(byte m[4]) {
   mset[3] = minuteset - mset[2] * 10;
   showtime(mset, 0);
   delay(d);
-  while (digitalRead(setmodepin) != HIGH) { //setting minutes until we press again the set button
-    if (digitalRead(setpluspin) == HIGH) {
+  while (digitalRead(setmodepin) == HIGH) { //setting minutes until we press again the set button
+    if (digitalRead(setpluspin) != HIGH) {
       minuteset = (minuteset + 1) % 60; // same math as previously done to hours
       mset[2] = minuteset / 10;
       mset[3] = minuteset - mset[2] * 10;
       showtime(mset, 0);
       delay(d);
     }
-    if (digitalRead(setminuspin) == HIGH) {
+    if (digitalRead(setminuspin) != HIGH) {
       minuteset = (minuteset - 1);
       if (minuteset < 0) minuteset = 59;
       mset[2] = minuteset / 10;
