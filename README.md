@@ -9,6 +9,13 @@ Repository used to share my work for the clock installed on the Facultat d'Infor
  - 1 x DC connector http://bit.ly/33AKoJ4
  - 1 x DS3231 RTC module http://bit.ly/32uphGY
  - 1 x CR2032 3v battery http://bit.ly/2PYQaAa
+ - 3 x 12mm Metal Push Button Switch Momentary High https://bit.ly/337vpaj
+ - 20 x 150~300mm Servo Extension Lead Wire Cable https://bit.ly/3iaA7dB
+ - 1 x Breadboard Jumper Cable Wires Kit 6cm https://bit.ly/2ZxfuBp
+ - 1 x Red/Black Cable 26AWG 150mm  https://bit.ly/35eJe9F
+ 
+### Extras
+ - 1 x FTDI USB to TTL UART FT232 https://bit.ly/2R5Vjpw
 
 TODO: complete list
 
@@ -37,6 +44,7 @@ TODO: complete list
 | 4   | dc_shoe_f.stl        |
 | 4   | dc_shoe_g.stl        |
 | 2   | dc_shoe_center.stl   |
+| 1   | electronics_case_v2  |
 
 note: info extracted from http://www.otvinta.com/download14.html
 
