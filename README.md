@@ -1,3 +1,5 @@
+![IMG_20200908_175020_Bokeh](https://user-images.githubusercontent.com/4519667/92978429-fff57b00-f48f-11ea-8e35-1595713e20d5.jpg)
+
 # BarFIBclock
 Repository used to share my work for the clock installed on the Facultat d'Informàtica de Barcelona (FIB) bar
 
