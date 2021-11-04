@@ -4,20 +4,22 @@
 Repository used to share my work for the clock installed on the Facultat d'Informàtica de Barcelona (FIB) bar
 
 ## Materials
- - 28 x 9g Servo http://bit.ly/2K3JbCk
- - 1 x Arduino Pro mini Atmega328 http://bit.ly/2NVvFll
- - 2 x I2C servo controller http://bit.ly/34KH0LF
- - 1 x DC 5V3A adapter http://bit.ly/2NvYGVG
- - 1 x DC connector http://bit.ly/33AKoJ4
- - 1 x DS3231 RTC module http://bit.ly/32uphGY
- - 1 x CR2032 3v battery http://bit.ly/2PYQaAa
- - 3 x 12mm Metal Push Button Switch Momentary High https://bit.ly/337vpaj
- - 20 x 150~300mm Servo Extension Lead Wire Cable https://bit.ly/3iaA7dB
- - 1 x Breadboard Jumper Cable Wires Kit 6cm https://bit.ly/2ZxfuBp
- - 1 x Red/Black Cable 26AWG 150mm  https://bit.ly/35eJe9F
+ - 28 x 9g Servo [link](https://s.click.aliexpress.com/e/_ABv179)
+ - 1 x Arduino Pro mini Atmega328 [link](http://bit.ly/2NVvFll)
+ - 2 x I2C PCA9685 servo controller [link](https://s.click.aliexpress.com/e/_AAJpyf)
+ - 1 x DC 5V3A adapter [link](http://bit.ly/2NvYGVG)
+ - 1 x DC connector [link](http://bit.ly/33AKoJ4)
+ - 1 x DS3231 RTC module [link](http://bit.ly/32uphGY)
+ - 1 x CR2032 3v battery [link](http://bit.ly/2PYQaAa)
+ - 3 x 12mm Metal Push Button Switch Momentary High [link](https://bit.ly/337vpaj)
+ - 20 x 150~300mm Servo Extension Lead Wire Cable [link](https://bit.ly/3iaA7dB)
+ - 1 x Breadboard Jumper Cable Wires Kit 6cm [link](https://bit.ly/2ZxfuBp)
+ - 1 x Red/Black Cable 26AWG 150mm  [link](https://bit.ly/35eJe9F)
  
 ### Extras
- - 1 x FTDI USB to TTL UART FT232 https://bit.ly/2R5Vjpw
+ - 1 x FTDI USB to TTL UART FT232 [link](https://bit.ly/2R5Vjpw)
+ - Cable ties [link](https://s.click.aliexpress.com/e/_9ybz9t)
+ - Cyanoacrylate Glue (Superglue like)
 
 TODO: complete list
 
