@@ -15,11 +15,13 @@ Repository used to share my work for the clock installed on the Facultat d'Infor
  - 20 x 150~300mm Servo Extension Lead Wire Cable [link](https://bit.ly/3iaA7dB)
  - 1 x Breadboard Jumper Cable Wires Kit 6cm [link](https://bit.ly/2ZxfuBp)
  - 1 x Red/Black Cable 26AWG 150mm  [link](https://bit.ly/35eJe9F)
+ - 12 x M2.5 Screws and nuts
  
 ### Extras
  - 1 x FTDI USB to TTL UART FT232 [link](https://bit.ly/2R5Vjpw)
  - Cable ties [link](https://s.click.aliexpress.com/e/_9ybz9t)
  - Cyanoacrylate Glue (Superglue like)
+ - Heat-shrink tubing [link](https://s.click.aliexpress.com/e/_Aswi55)
 
 TODO: complete list
 
@@ -33,7 +35,7 @@ TODO: complete list
 | 4   | dc_segment_e.stl     |
 | 4   | dc_segment_f.stl     |
 | 4   | dc_segment_g.stl     |
-| 4   | dc_base.stl          |
+| 4   | dc_base_custom.stl   |
 | 1   | dc_base_center.stl   |
 | 2   | dc_frame_corner1.stl |
 | 2   | dc_frame_corner2.stl |
