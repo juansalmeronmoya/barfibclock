@@ -26,6 +26,10 @@ Repository used to share my work for the clock installed on the Facultat d'Infor
 TODO: complete list
 
 ## Printing 3D models
+
+![image](https://user-images.githubusercontent.com/4519667/140650887-55e16fb9-d767-4988-97bd-a53b0fc0e455.png)
+
+
 | Qty | Filename             |
 | --- | -------------------- |
 | 4   | dc_segment_a.stl     |
