@@ -49,7 +49,7 @@ TODO: complete list
 | 8   | [custom_shoe_ag.stl](3dparts/frame_segments/custom_shoe_ag.stl) 
 | 8   | [custom_shoe_bf.stl](3dparts/frame_segments/custom_shoe_bf.stl) 
 | 8   | [custom_shoe_ce.stl](3dparts/frame_segments/custom_shoe_ce.stl) 
-| 4   | [dc_shoe_d.stl](3dparts/frame_segments/dc_shoe_d.stl)
+| 4   | [custom_shoe_d.stl](3dparts/frame_segments/custom_shoe_d.stl)
 | 2   | [dc_shoe_center.stl](3dparts/frame_segments/dc_shoe_center.stl)
 | 1   | [custom_electronics_case_v2](3dparts/frame_segments/custom_electronics_case_v2.stl)
 
