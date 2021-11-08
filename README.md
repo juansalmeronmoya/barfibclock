@@ -30,31 +30,28 @@ TODO: complete list
 ![image](https://user-images.githubusercontent.com/4519667/140650887-55e16fb9-d767-4988-97bd-a53b0fc0e455.png)
 
 
-| Qty | Filename             |
-| --- | -------------------- |
-| 4   | dc_segment_a.stl     |
-| 4   | dc_segment_b.stl     |
-| 4   | dc_segment_c.stl     |
-| 4   | dc_segment_d.stl     |
-| 4   | dc_segment_e.stl     |
-| 4   | dc_segment_f.stl     |
-| 4   | dc_segment_g.stl     |
-| 4   | dc_base_custom.stl   |
-| 1   | dc_base_center.stl   |
-| 2   | dc_frame_corner1.stl |
-| 2   | dc_frame_corner2.stl |
-| 1   | dc_frame_top.stl     |
-| 1   | dc_frame_bottom.stl  |
-| 18  | dc_washer.stl        |
-| 4   | dc_shoe_a.stl        |
-| 4   | dc_shoe_b.stl        |
-| 4   | dc_shoe_c.stl        |
-| 4   | dc_shoe_d.stl        |
-| 4   | dc_shoe_e.stl        |
-| 4   | dc_shoe_f.stl        |
-| 4   | dc_shoe_g.stl        |
-| 2   | dc_shoe_center.stl   |
-| 1   | electronics_case_v2  |
+| Qty | Filename                    |
+| --- | --------------------        |
+| 4   | dc_segment_a.stl            |
+| 4   | dc_segment_b.stl            |
+| 4   | dc_segment_c.stl            |
+| 4   | dc_segment_d.stl            |
+| 4   | dc_segment_e.stl            |
+| 4   | dc_segment_f.stl            |
+| 4   | dc_segment_g.stl            |
+| 4   | custom_base.stl             |
+| 1   | dc_base_center.stl          |
+| 2   | dc_frame_corner1.stl        |
+| 2   | dc_frame_corner2.stl        |
+| 1   | dc_frame_top.stl            |
+| 1   | dc_frame_bottom.stl         |
+| 18  | dc_washer.stl               |
+| 8   | custom_shoe_ag.stl          |
+| 8   | custom_shoe_bf.stl          |
+| 8   | custom_shoe_ce.stl          |
+| 4   | dc_shoe_d.stl               |
+| 2   | dc_shoe_center.stl          |
+| 1   | custom_electronics_case_v2  |
 
 note: info extracted from http://www.otvinta.com/download14.html
 
