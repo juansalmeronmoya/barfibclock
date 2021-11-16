@@ -55,6 +55,12 @@ TODO: complete list
 
 note: info extracted from http://www.otvinta.com/download14.html
 
+## Electronics
+
+![IMG_20211107_132917](https://user-images.githubusercontent.com/4519667/142078420-1a5874a4-e7d1-4994-b1f8-7ed3db5bdf1e.jpg)
+![IMG_20211107_132942_Bokeh](https://user-images.githubusercontent.com/4519667/142078419-ac3f7bff-2913-480d-8846-dd72bfe842eb.jpg)
+
+
 ## Previous work
 This project is inspired and based on the otvinta3d clock.
 Most of the 3D models used are the same, you can check them out at
