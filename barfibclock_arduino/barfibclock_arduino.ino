@@ -153,30 +153,53 @@ void showtime(byte m [4], int w) {
   }
 }
 
-void showdigit(byte i, byte digit, int w) {
-  // parameters: digit position =01:23, digit to show
+void moveSegment(byte digitNumber, byte digitPosition, byte segmentNumber, int delayMs) {
+  // parameters: 
+  //
+  // digitNumber = [0,1,2,3,4,5,6,7,8,9] is the number we want to show using the segments
+  // digitPosition = [0,1,2,3] is the position of the number we want to show on the clock starting from the left side. 01:23 
+  // segmentNumber = [0,1,2,3,4,5,6] the segment of the digit we sant to move. See the layout used on the README.md
+  // delayMS = amount of time between segment moves in milliseconds.
+  //
   int pulse;
   byte servonum, a, segmentposition;
-
-  for (byte j = 0; j < 7; j++) { // show the 7 segments
-    servonum = j + (8 * ((i == 1 || i == 3))); // add 8 if position is 1 or 3 because 1 ands 3 digits start on pin 8 of the PCA
-    segmentposition = mapchar[digit] [j]; // segment should be low or high?
-    if (segmentposition == 0) {
-      pulse = servolow[i][j];
-    } else {
-      pulse = servohigh[i][j];
-    }
-
-    switch (i) { // switch for both PCA controllers
-      case 0: case 1:
-        servoHours.setPWM(servonum, 0, pulse);
-        break;
-      case 2: case 3:
-        servoMinutes.setPWM(servonum, 0, pulse);
-        break;
-    }
-    delay(w); // delay in between movement of contiguous segments, so we can do waves oleeeeeeee. Normally is 0.
+  
+  servonum = segmentNumber + (8 * ((digitPosition == 1 || digitPosition == 3))); // add 8 if position is 1 or 3 because 1 ands 3 digits start on pin 8 of the PCA
+  segmentposition = mapchar[digitNumber] [segmentNumber]; // segment should be low or high?
+  if (segmentposition == 0) {
+    pulse = servolow[digitPosition][segmentNumber];
+  } else {
+    pulse = servohigh[digitPosition][segmentNumber];
   }
+
+  switch (digitPosition) { // switch for both PCA controllers
+    case 0: case 1:
+      servoHours.setPWM(servonum, 0, pulse);
+      break;
+    case 2: case 3:
+      servoMinutes.setPWM(servonum, 0, pulse);
+      break;
+  }
+  delay(delayMs); // delay in between movement of contiguous segments, so we can do waves oleeeeeeee. Normally is 0.
+}
+
+void showdigit(byte digitPosition, byte digitNumber, int delayMs) {
+  // parameters: digit position =01:23, digit to show
+
+  // first we are ging to move down upper side segments (1 and 2) to avoid collision with central segment (3)
+  moveSegment(10,digitPosition,1,delayMs);
+  moveSegment(10,digitPosition,2,delayMs);
+
+  // move the 7 segment on specific order to avoid collisions
+  moveSegment(digitNumber,digitPosition,0,delayMs);
+  moveSegment(digitNumber,digitPosition,6,delayMs);
+  delay(100);
+  moveSegment(digitNumber,digitPosition,3,delayMs);
+  moveSegment(digitNumber,digitPosition,4,delayMs);
+  moveSegment(digitNumber,digitPosition,5,delayMs);
+  delay(100);
+  moveSegment(digitNumber,digitPosition,1,delayMs);
+  moveSegment(digitNumber,digitPosition,2,delayMs);
 }
 
 void setmode(byte m[4]) {
