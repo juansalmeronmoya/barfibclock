@@ -1,7 +1,7 @@
 ![IMG_20200908_175020_Bokeh](https://user-images.githubusercontent.com/4519667/92978429-fff57b00-f48f-11ea-8e35-1595713e20d5.jpg)
 
 # BarFIBclock
-Repository used to share my work for the clock installed on the Facultat d'Informàtica de Barcelona (FIB) bar
+Repository used to share my work for the clock installed on the [Facultat d'Informàtica de Barcelona (FIB) bar](https://goo.gl/maps/2sY8hWTRuadKxtpD8)
 
 ## Materials
  - 28 x 9g Servo [link](https://s.click.aliexpress.com/e/_ABv179)
@@ -60,6 +60,23 @@ note: info extracted from http://www.otvinta.com/download14.html
 ![IMG_20211107_132917](https://user-images.githubusercontent.com/4519667/142078420-1a5874a4-e7d1-4994-b1f8-7ed3db5bdf1e.jpg)
 ![IMG_20211107_132942_Bokeh](https://user-images.githubusercontent.com/4519667/142078419-ac3f7bff-2913-480d-8846-dd72bfe842eb.jpg)
 
+## History and Maintenance Book
+
+[Dec 2021] 
+* Fixed segment movement order and timing to avoid segment collisions
+* Upgraded to tighter segment shoes to avoid segment collisions
+* Died servos replacement (caused by collisions)
+
+[~2021]
+* Died servos replacement (caused by collisions)
+* Glued again some servos
+
+[Sept 2020]
+* Final hardware with top case and easy programming buttons and wiring
+* Installation on the Bar FIB wall, Hurra!
+
+[Dec 2019]
+* Hardware and software development with arduino
 
 ## Previous work
 This project is inspired and based on the otvinta3d clock.
