@@ -27,7 +27,7 @@ TODO: complete list
 
 ## Printing 3D models
 
-![image](https://user-images.githubusercontent.com/4519667/140650887-55e16fb9-d767-4988-97bd-a53b0fc0e455.png)
+![image](https://user-images.githubusercontent.com/4519667/145512578-a717dd92-0428-43f0-900b-aa4dcf06545e.png)
 
 
 | Qty | Filename                    
