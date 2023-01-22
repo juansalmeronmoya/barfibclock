@@ -62,6 +62,10 @@ note: info extracted from http://www.otvinta.com/download14.html
 
 ## History and Maintenance Book
 
+[Jan 2023] 
+* Servos replacement (caused by +800k cycles operation wear) some were died other just as prevention.
+* Flashed new servo operation limits
+
 [Dec 2021] 
 * Fixed segment movement order and timing to avoid segment collisions
 * Upgraded to tighter segment shoes to avoid segment collisions
