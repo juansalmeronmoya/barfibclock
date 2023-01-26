@@ -60,6 +60,17 @@ note: info extracted from http://www.otvinta.com/download14.html
 ![IMG_20211107_132917](https://user-images.githubusercontent.com/4519667/142078420-1a5874a4-e7d1-4994-b1f8-7ed3db5bdf1e.jpg)
 ![IMG_20211107_132942_Bokeh](https://user-images.githubusercontent.com/4519667/142078419-ac3f7bff-2913-480d-8846-dd72bfe842eb.jpg)
 
+## How to program it
+
+Using a USB FTDI controller you can flash the arduino pro mini using arduino IDE selecting this parameters:
+* Board: "Arduino Pro or Oro mini"
+* Processor: ATmega328P 5V
+* Port: your USB FTDI serial port
+
+The programmer is connected with this connection diagram:
+
+
+
 ## History and Maintenance Book
 
 [Jan 2023] 
