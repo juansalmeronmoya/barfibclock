@@ -68,6 +68,7 @@ Using a USB FTDI controller you can flash the arduino pro mini using arduino IDE
 * Port: your USB FTDI serial port
 
 The programmer is connected with this connection diagram:
+<img width="509" alt="image" src="https://user-images.githubusercontent.com/4519667/214741353-09d67d3d-90e6-45b6-aec8-8fc668156ff8.png">
 
 
 
