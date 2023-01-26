@@ -33,22 +33,27 @@ const byte mapchar [11][7] = { //for each number, position of every segment
   {0, 0, 0, 0, 0, 0, 0} // null (all down)
 };
 
-const int servolow [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
-  {400, 500, 130, 180, 280, 410, 340},
-  {420, 330, 170, 180, 180, 400, 370},
-  {400, 400, 210, 180, 270, 510, 380},
-  {400, 400, 250, 210, 210, 460, 390}
+const int servolow [4] [7] = { 
+// pulse to add to servopulse for fine tunning of each individual servo
+// higher numbers represents a servo position more clockwise if you look the servo from the cable side
+  {400, 500, 130, 180, 280, 410, 330}, //digit 0. 
+  {420, 330, 170, 180, 180, 400, 350}, //digit 1
+  {400, 400, 210, 180, 270, 510, 380}, //digit 2
+  {390, 420, 250, 210, 250, 460, 370}  //digit 3
 };
 
-const int servohigh [4] [7] = { // pulse to add to servopulse for fine tunning of each individual servo
-  {220, 300, 380, 410, 480, 170, 130},
-  {220, 130, 410, 400, 420, 130, 170},
-  {200, 190, 480, 410, 510, 280, 180},
-  {180, 180, 470, 450, 460, 210, 190}
+const int servohigh [4] [7] = { 
+// pulse to add to servopulse for fine tunning of each individual servo
+// higher numbers represents a servo position more clockwise if you look the servo from the cable side
+  {220, 300, 380, 410, 480, 170, 130}, //digit 0 
+  {220, 130, 410, 400, 420, 130, 170}, //digit 1 
+  {190, 180, 480, 400, 510, 270, 180}, //digit 2
+  {200, 190, 450, 450, 440, 230, 170}  //digit 3
 };
 
 byte moment [4] = {8, 8, 8, 8}; // actual time
 byte momentnull [4] = {10, 10, 10, 10}; // all digits in null for startup
+byte momenthigh [4] = {8, 8, 8, 8}; // all digits in null for startup
 byte momentdisplay [4]; //time shown in display
 
 void setup() {
@@ -149,7 +154,7 @@ void showtime(byte m [4], int w) {
       }
     }
     delay(d); // give time to the servos to stop moving before disabling them
-    //digitalWrite(enablepin, HIGH); // disable the servos
+    digitalWrite(enablepin, HIGH); // disable the servos
   }
 }
 
