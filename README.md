@@ -23,8 +23,6 @@ Repository used to share my work for the clock installed on the [Facultat d'Info
  - Cyanoacrylate Glue (Superglue like)
  - Heat-shrink tubing [link](https://s.click.aliexpress.com/e/_Aswi55)
 
-TODO: complete list
-
 ## Printing 3D models
 
 ![image](https://user-images.githubusercontent.com/4519667/145512578-a717dd92-0428-43f0-900b-aa4dcf06545e.png)
@@ -63,7 +61,7 @@ note: info extracted from http://www.otvinta.com/download14.html
 ## How to program it
 
 Using a USB FTDI controller you can flash the arduino pro mini using arduino IDE selecting this parameters:
-* Board: "Arduino Pro or Oro mini"
+* Board: "Arduino Pro or Pro mini"
 * Processor: ATmega328P 5V
 * Port: your USB FTDI serial port
 
